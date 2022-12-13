@@ -2,7 +2,7 @@ package transport;
 
 import java.time.LocalDate;
 
-public class Car {
+public class Car extends Transport {
     private final String brand;
     private final String model;
     private double engineVolume;
@@ -15,13 +15,35 @@ public class Car {
     private final int numberOfSeats;
     private boolean summerTyres;
 
+
     private Key key;
     private insurance insurance;
 
 
-    public Car(String brand, String model, double engineVolume, String color, int productionYear,
-               String productionCountry, String bodyType, int numberOfSeats, String transmission,
-               String registrationNumber, boolean summerTyres) {
+    @Override
+    public void refill() {
+        System.out.println("Автомобиль заправляется топливом" + getFuel());
+        setPercentageFuel(100);
+
+    }
+
+
+    public Car(String brand,
+               String model,
+               String color,
+               int maxSpeed,
+               int productionYear,
+               String productionCountry,
+               double engineVolume,
+               String bodyType,
+               int numberOfSeats,
+               String transmission,
+               String registrationNumber,
+               boolean summerTyres,
+               String fuel,
+               double percentageFuel){
+        super(brand, model, color, productionYear,productionCountry, maxSpeed, fuel,percentageFuel);
+
         if (brand == null || brand.isEmpty()) {
             brand = "default";
         }
